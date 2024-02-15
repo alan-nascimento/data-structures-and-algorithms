@@ -8,7 +8,7 @@ The solution utilizes an OrderedDict from the collections module in Python. Orde
 
 ### Initialization:
 
-In the constructor **init**(), an OrderedDict named cache is created to store key-value pairs. The choice of OrderedDict ensures that the order of elements reflects their access history. Additionally, the capacity of the cache is stored to ensure efficient eviction of least recently used items when the cache reaches its maximum capacity.
+In the constructor `init()`, an OrderedDict named cache is created to store key-value pairs. The choice of OrderedDict ensures that the order of elements reflects their access history. Additionally, the capacity of the cache is stored to ensure efficient eviction of least recently used items when the cache reaches its maximum capacity.
 
 ### Retrieving Values:
 
