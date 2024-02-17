@@ -1,4 +1,6 @@
-# Explanation for Question 1
+# Explanation for Union and Intersection Implementation
+
+## Data Structure Choice:
 
 In this code, I've used a singly linked list to implement the data structure. A linked list was chosen because it allows for dynamic memory allocation and efficient insertion and deletion operations, which are common in scenarios involving sets of data. Each node in the linked list holds a value and a reference to the next node. This allows for straightforward traversal of the list.
 

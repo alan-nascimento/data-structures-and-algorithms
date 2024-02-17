@@ -1,13 +1,13 @@
 # Explanation for the Code Implementation
 
-# Decision Making:
+## Decision Making:
 
-1. #### Data Structure Choice:
+## Data Structure Choice:
 
 - I opted to use a class named `Group` to represent each group in the Active Directory. This class contains attributes for the group's name, a list of sub-groups, and a list of users. I chose this structure because it allows for easy organization of groups and users in a hierarchical manner, reflecting the structure of Active Directory.
 - Lists were used to store sub-groups and users within each group due to their simplicity and efficiency in appending elements and accessing them by index. Additionally, I chose lists because the number of sub-groups and users within each group is not fixed.
 
-2. Algorithm Selection:
+## Algorithm Selection:
 
 - I employed a depth-first search (DFS) algorithm to efficiently traverse the hierarchy of groups within the Active Directory. DFS allows us to systematically explore each branch of the group hierarchy, checking for the presence of the target user in each group or sub-group.
 - DFS was a suitable choice as it efficiently handles the traversal of hierarchical structures, ensuring that all possible paths are explored until either the user is found or all groups have been visited.
