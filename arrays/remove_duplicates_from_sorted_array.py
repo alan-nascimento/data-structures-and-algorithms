@@ -8,7 +8,7 @@ class Solution:
                 nums[write_index] = nums[i]
                 write_index += 1
         return write_index
-    
+
 # Time complexity: O(n) where n is the length of the input list
 # Space complexity: O(1) as we are not using any extra space
 
