@@ -7,10 +7,7 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return None
-
-        if not head.next:
+        if not head or not head.next:
             return head
 
         def revert(prev_node, curr_node, next_node):
