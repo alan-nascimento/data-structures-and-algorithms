@@ -12,19 +12,28 @@ class Solution:
 
         return self.merge(left, right)
 
-    def merge(self, left, right):
-        arr = []
+    def merge(self, left: List[int], right: List[int]) -> List[int]:
+        result = []
 
-        while left and right:
-            if left < right:
-                arr.append(left)
+        left_index, right_index = 0, 0
+
+        while left_index < len(left) and right_index < len(right):
+            if left[left_index] < right[right_index]:
+                result.append(left[left_index])
+                left_index += 1
             else:
-                arr.append(right)
+                result.append(right[right_index])
+                right_index += 1
 
-        return arr
+        result.extend(left[left_index:])
+        result.extend(right[right_index:])
 
-# Time complexity: O(nlogn) where n is the length of the input list
-# Space complexity: O(n) where n is the length of the input list
+        return result
+
+# Merge sort solution
+
+# Time complexity: O(n log n) where n is the length of the input list
+# Space complexity: O(n) because we are using extra space to store the sorted list
 
 # Test cases
 
