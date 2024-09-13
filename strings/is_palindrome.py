@@ -1,44 +1,34 @@
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        s = str(x)
-        reverse_index = len(s) - 1
+    def isPalindrome(self, s: str) -> bool:
+        left, right = 0, len(s) - 1
 
-        for index in range(len(s) - 1):
-            if s[index] != s[reverse_index]:
+        while left <= right:
+            if not s[left].isalnum():
+                left += 1
+                continue
+            
+            if not s[right].isalnum():
+                right -= 1
+                continue
+
+            if s[left].lower() == s[right].lower():
+                left += 1
+                right -= 1
+            else:
                 return False
-            reverse_index -= 1
 
         return True
 
-# Time complexity: O(n) where n is the number of digits in x
-# Space complexity: O(1) because we are not using any extra space
+# Time Complexity: O(n) where n is the length of the string
+# Space Complexity: O(1) since we are not using any extra space
 
-# Test cases
+# Test Cases
 
-# Test case 1
-
-# Input
-x = 121
-# Output
-# True
-r = Solution().isPalindrome(x)
-print(r)
+r = Solution().isPalindrome("A man, a plan, a canal: Panama")
 assert r == True
 
-# Test case 2
-x = -121
-# Output
-# False
-r = Solution().isPalindrome(x)
-print(r)
+r = Solution().isPalindrome("race a car")
 assert r == False
 
-# Test case 3
-x = 10
-# Output
-# False
-r = Solution().isPalindrome(x)
-print(r)
-assert r == False
-
-print("All test cases pass")
+r = Solution().isPalindrome("Marge, let's \"[went].\" I await {news} telegram.")
+assert r == True
