@@ -33,3 +33,45 @@ def kadanes_algorithm(arr):
 
 -   Time complexity: O(n)
 -   Space complexity: O(1)
+
+## Sliding Window Technique
+
+The sliding window technique is used to solve problems where we need to find a subarray that meets certain conditions. It involves maintaining a window that can slide over the array and is used to track the subarray that meets the conditions.
+
+### Motivation
+
+Given an array of integers and a target sum, we want to find the minimum subarray length that has a sum greater than or equal to the target sum. This is a classic problem that can be solved using the sliding window technique.
+
+### Algorithm
+
+1. Initialize two pointers `left` and `right` to 0.
+2. Initialize a variable `min_length` to infinity.
+3. Iterate over the array using the `right` pointer.
+4. Update the window sum by adding the element at the `right` pointer.
+5. While the window sum is greater than or equal to the target sum, update `min_length` and shrink the window by moving the `left` pointer.
+6. Return `min_length`.
+
+### Example
+
+Given an array `[2, 3, 1, 2, 4, 3]` and a target sum of `7`, the minimum subarray length with a sum greater than or equal to `7` is `2` (the subarray `[4, 3]`).
+
+### Implementation
+
+```python
+def min_subarray_length(arr, target_sum):
+    left = 0
+    window_sum = 0
+    min_length = float('inf')
+    for right in range(len(arr)):
+        window_sum += arr[right]
+        while window_sum >= target_sum:
+            min_length = min(min_length, right - left + 1)
+            window_sum -= arr[left]
+            left += 1
+    return min_length if min_length != float('inf') else 0
+```
+
+### Complexity
+
+-   Time complexity: O(n)
+-   Space complexity: O(1)
