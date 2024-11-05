@@ -75,3 +75,88 @@ def min_subarray_length(arr, target_sum):
 
 -   Time complexity: O(n)
 -   Space complexity: O(1)
+
+## Two Pointers Technique
+
+The two pointers technique is used to solve problems where we need to find a pair of elements that meet certain conditions. It involves maintaining two pointers that can move in the array and is used to find the pair of elements that meet the conditions.
+
+### Motivation
+
+Given an array of integers that is sorted in ascending order, we want to find a pair of elements that sum up to a target sum. This is a classic problem that can be solved using the two pointers technique.
+
+### Algorithm
+
+1. Initialize two pointers `left` and `right` to the start and end of the array.
+2. While `left` is less than `right`, check the sum of the elements at the `left` and `right` pointers.
+3. If the sum is equal to the target sum, return the pair.
+4. If the sum is less than the target sum, increment the `left` pointer.
+5. If the sum is greater than the target sum, decrement the `right` pointer.
+6. If no pair is found, return `None`.
+
+### Example
+
+Given an array `[2, 7, 11, 15]` and a target sum of `9`, the pair of elements that sum up to `9` is `(2, 7)`.
+Given an array `[2, 7, 11, 15]` and a target sum of `10`, no pair of elements sum up to `10`.
+
+### Implementation
+
+```python
+def two_sum(arr, target_sum):
+    left, right = 0, len(arr) - 1
+    while left < right:
+        current_sum = arr[left] + arr[right]
+        if current_sum == target_sum:
+            return (arr[left], arr[right])
+        elif current_sum < target_sum:
+            left += 1
+        else:
+            right -= 1
+    return None
+```
+
+### Complexity
+
+-   Time complexity: O(n)
+-   Space complexity: O(1)
+
+## Prefix Sum Technique
+
+The prefix sum technique is used to solve problems where we need to find subarrays that meet certain conditions. It involves calculating the prefix sum of the array and using it to find the sum of subarrays efficiently.
+
+### Motivation
+
+Given an array of integers and a target sum, we want to find the number of subarrays that have a sum equal to the target sum. This is a classic problem that can be solved using the prefix sum technique.
+
+### Algorithm
+
+1. Initialize a variable `count` to 0 and a dictionary `prefix_sum_count` with a default value of 0.
+2. Initialize a variable `prefix_sum` to 0.
+3. Iterate over the array.
+4. Update `prefix_sum` by adding the current element.
+5. If `prefix_sum - target_sum` is in `prefix_sum_count`, increment `count` by the value of `prefix_sum_count[prefix_sum - target_sum]`.
+6. Increment the value of `prefix_sum_count[prefix_sum]` by 1.
+7. Return `count`.
+
+### Example
+
+Given an array `[3, 4, 7, 2, -3, 1, 4, 2]` and a target sum of `7`, the number of subarrays with a sum equal to `7` is `4`.
+
+### Implementation
+
+```python
+def subarray_sum(arr, target_sum):
+    count = 0
+    prefix_sum_count = {0: 1}
+    prefix_sum = 0
+    for x in arr:
+        prefix_sum += x
+        if prefix_sum - target_sum in prefix_sum_count:
+            count += prefix_sum_count[prefix_sum - target_sum]
+        prefix_sum_count[prefix_sum] = prefix_sum_count.get(prefix_sum, 0) + 1
+    return count
+```
+
+### Complexity
+
+-   Time complexity: O(n)
+-   Space complexity: O(n)
